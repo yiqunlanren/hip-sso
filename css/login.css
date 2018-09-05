@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+*{ padding:0; margin:0;font-family:"微软雅黑",Arial;}
+
+
+
+
+
+html{ font-size:100px;}
+body{ font-size:0.14rem;}
+
+
+html,body{ 
+width:100%; height:100%; background:url(../images/bg.png); 
+font-family:"微软雅黑",Arial;  text-decoration:none;
+}
+
+
+@media screen and (max-width: 800px) {
+   html{ font-size:60px;}
+}
+
+
+.clear{ clear:both; height:0px; line-height:0px;}
+
+.login_logo{
+	position:absolute; left:0.40rem; top:0.40rem;
+	height:0.43rem;
+}
+.login_logo .logo{ float:left; width:0.49rem; height:0.43rem; display:inline-block; background:url(../images/logo.png) no-repeat; background-size:100%;}
+.login_logo .name{float:left; height:0.43rem; line-height:0.43rem; display:inline-block; margin-left:0.08rem;
+font-size:0.24rem; font-weight:bold; color:#fff;}
+.login_content{
+	position:absolute; left:50%; top:50%;
+	width:8rem; height:4.28rem; margin:-2.14rem auto 0 -4rem;	
+}
+.login_banner{
+	float:left;
+	width:3.47rem; height:3.47rem; margin-top:0.40rem; background:url(../images/bg_photo.png) no-repeat; background-size:100%; border-radius:0.04rem;
+}
+.login{
+	float:right;
+	width:2.90rem; min-height:3.38rem; padding:0.30rem 0.40rem 0.40rem 0.40rem; background:#fff; border-radius:0.04rem;
+}
+.loginError{
+	background: #FEEEEB;
+    border: 0.01rem solid #F15532;
+    color: #F15533;
+    margin-bottom: 0.20rem;
+    line-height: 0.24rem;
+    box-sizing: border-box;
+    font-size: 0.14rem;
+    padding: 0.05rem 0.12rem 0.05rem 0.12rem;}
+.login .title{
+	height:0.36rem; line-height:0.36rem; font-size:0.18rem; display:inline-block; border-bottom:#93a2bb solid 0.03rem;
+	color:#404653;
+	margin-bottom:0.30rem; 
+}
+.login .inputName{
+	width:2.90rem; height:0.44rem;  border:#dce1e6 solid 0.01rem;  border-radius:0.02rem;     overflow: hidden;
+}
+.login .inputName input {
+	float:left;
+	width:2.32rem; height:0.44rem; line-height:0.44rem;  border:0; padding:0  0.08rem; font-family:"微软雅黑",Arial; border-radius:0.02rem;
+}
+.login .inputPassword{
+	width:2.90rem; height:0.44rem;  border:#dce1e6 solid 0.01rem; margin-top:0.25rem; border-radius:0.04rem; border-radius:0.02rem;     overflow: hidden;
+}
+.login .inputPassword input {
+	float:left; display:inline-block;
+	width:2.32rem; height:0.44rem; line-height:0.44rem;  border:0; padding:0  0.08rem; font-family:"微软雅黑",Arial; border-radius:0.02rem;
+}
+.login .input_group_prepend{
+	float:left; display:inline-block;
+	width:0.39rem; height:0.44rem; background:#f7f9fa; border-right:#dce1e6 solid 0.01rem; border-radius:0.02rem 0 0 0.02rem;
+}
+.login .input_group_prepend i.i01{
+	width:0.16rem; height:0.16rem; display:inline-block; margin:0.14rem 0 0 0.12rem; background:url(../images/icon_1.png) no-repeat;  background-size:100%;
+}
+.login .input_group_prepend i.i02{
+	width:0.16rem; height:0.16rem; display:inline-block; margin:0.14rem 0 0 0.12rem; background:url(../images/icon_2.png) no-repeat;  background-size:100%;
+}
+
+.login .code{
+	width:2.90rem; height:0.44rem; line-height:0.44rem;  border:#dce1e6 solid 0.01rem; background:#f7f9fa; margin-top:0.20rem; border-radius:0.02rem;
+	font-size:0.14rem;
+}
+
+.login .forget{ margin-top:0.2rem; font-size:0.14rem; color:#9fabc0; }
+.login .forget .state{
+	float:left;
+}
+.login .forget .password{
+	float:right;
+}
+.login .forget .password a{
+	color:#9fabc0; text-decoration:none;
+}
+.login .forget .password a:hover{
+	color:#2461f6;
+}
+.login .loginButtonBox{
+	width:2.9rem; height:0.5rem; margin-top:0.25rem;
+}

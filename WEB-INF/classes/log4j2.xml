@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Specify the refresh internal in seconds. -->
+<Configuration monitorInterval="60">
+
+    <!-- 将一些常用值提取出来，然后在文件的其他部分通过${}的形式引用，这些值可以随便定义 -->
+    <Properties>
+        <!-- 定义应用名 -->
+        <Property name="app" value="hip-emr"/>
+        <!-- 定义日志文件根目录 -->
+        <Property name="logDir" value="${sys:catalina.home}/logs"/>
+        <!-- 定义日志的通用格式 -->
+        <!--<Property name="genericPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>-->
+        <Property name="genericPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %l - %msg%n"/>
+        <!-- 定义日志分卷文件通用文件名形式 -->
+        <Property name="genericFilePattern" value="%d{yyyy-MM-dd}-%i"/>
+    </Properties>
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %p [%c] - &lt;%m&gt;%n"/>
+        </Console>
+        <RollingFile name="file" fileName="cas.log" append="true"
+                     filePattern="cas-%d{yyyy-MM-dd-HH}-%i.log">
+            <PatternLayout pattern="%d %p [%c] - %m%n"/>
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+        <RollingFile name="auditlogfile" fileName="cas_audit.log" append="true"
+                     filePattern="cas_audit-%d{yyyy-MM-dd-HH}-%i.log">
+            <PatternLayout pattern="%d %p [%c] - %m%n"/>
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+        <RollingFile name="perfFileAppender" fileName="perfStats.log" append="true"
+                     filePattern="perfStats-%d{yyyy-MM-dd-HH}-%i.log">
+            <PatternLayout pattern="%m%n"/>
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <AsyncLogger  name="org.jasig" level="info" additivity="false" includeLocation="true">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="file"/>
+        </AsyncLogger>
+        <AsyncLogger  name="org.springframework" level="warn" />
+        <AsyncLogger name="org.springframework.webflow" level="warn" />
+        <AsyncLogger name="org.springframework.web" level="warn" />
+        <AsyncLogger name="org.pac4j" level="warn" />
+        <!--
+        <AsyncLogger name="org.opensaml" level="debug" additivity="false">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="file"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.ldaptive" level="debug" additivity="false">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="file"/>
+        </AsyncLogger>
+        <AsyncLogger name="com.hazelcast" level="debug" additivity="false">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="file"/>
+        </AsyncLogger>
+        -->
+        <AsyncLogger  name="org.apereo.cas.security" level="warn" additivity="false" includeLocation="true">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="file"/>
+        </AsyncLogger>
+        
+        <AsyncLogger name="perfStatsLogger" level="info" additivity="false" includeLocation="true">
+            <AppenderRef ref="perfFileAppender"/>
+        </AsyncLogger>
+
+        <AsyncLogger name="org.jasig.cas.web.flow" level="info" additivity="true" includeLocation="true">
+            <AppenderRef ref="file"/>
+        </AsyncLogger>
+        <AsyncLogger name="org.jasig.inspektr.audit.support" level="info" includeLocation="true">
+            <AppenderRef ref="auditlogfile"/>
+            <AppenderRef ref="file"/>
+        </AsyncLogger>
+        <AsyncRoot level="error">
+            <AppenderRef ref="console"/>
+        </AsyncRoot>
+    </Loggers>
+</Configuration>
